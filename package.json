@@ -5,8 +5,21 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "start": "tsc && node dist/index.js",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "npm run build && node dist/index.js",
+    "build:prod": "npm run build && npx pkg ."
+  },
+  "bin": "dist/index.js",
+  "pkg": {
+    "assets": [
+      "node_modules/**/*",
+      "src/**/*"
+    ],
+    "targets": [
+      "node12-macos-x64",
+      "node10-win-x64"
+    ],
+    "outputPath": "bin"
   },
   "author": "",
   "license": "ISC",
